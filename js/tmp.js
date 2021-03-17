@@ -98,9 +98,20 @@ $(document).ready(function () {
 		}
 	];
 
-icons.forEach(icon => {
+const list = $('#icons');
+print(icons,list);
+
+/* icons.forEach(icon => {
 	const {name, prefix, type, family} = icon;
 	$('#icons').append(`<li><i class="${family} ${prefix}${name} ${type}"></i>${name}</li>`)
-/* 	console.log(prefix, family,name, type); */
+	console.log(prefix, family,name, type);
+}); */
 });
-});
+
+function print(array, list) {
+	array.forEach(item => {
+		const {color, name, family, prefix} = item;
+		const HTMLel = `<li><i class="${family} ${prefix}${name}"></i>${name}</li>`;
+		list.append(HTMLel);
+	});
+};
