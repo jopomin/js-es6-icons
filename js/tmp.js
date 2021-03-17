@@ -100,7 +100,7 @@ $(document).ready(function () {
 
 icons.forEach(icon => {
 	const {name, prefix, type, family} = icon;
-	$('#icons').append(`<li><i class="${family} ${prefix}${name} ${type}"></i></li>`)
+	$('#icons').append(`<li><i class="${family} ${prefix}${name} ${type}"></i>${name}</li>`)
 /* 	console.log(prefix, family,name, type); */
 });
 });
