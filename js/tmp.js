@@ -103,9 +103,25 @@ const list = $('#icons');
 const COLORARRAY = colors(icons, COLORS);
 console.log(COLORARRAY);
 print(COLORARRAY,list);
+const SELECT = $("#type");
+const TYPES = getType(COLORARRAY);
+console.log(TYPES);
+prOpt(TYPES, SELECT);
+SELECT.change({list}, function(event) {
+	const list = event.data.list;
+	const optSel = $(this).val();
+	const filtered = COLORARRAY.filter(icon => {
+		return icon.type === optSel;
+	});
+	print(filtered, list);
 });
 
+});
+
+
+
 function print(array, list) {
+	list.html('');
 	array.forEach(ICON => {
 		const {color, name, family, prefix} = ICON;
 		const HTMLel = `<li><i class="${family} ${prefix}${name} ${color}"></i> ${name} </li>`;
@@ -138,3 +154,11 @@ function getType(array) {
 	});
 	return TYPES;
 };
+
+
+function prOpt(array, select) {
+	array.forEach(element => {
+		select.append(`<option value="${element}">${element}</option>`);
+	});
+};
+
